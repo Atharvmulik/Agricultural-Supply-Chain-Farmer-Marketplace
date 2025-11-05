@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | AgriLink</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Animated background particles */
+  .particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    animation: float 20s infinite;
+  }
+
+  .particle:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; }
+  .particle:nth-child(2) { width: 60px; height: 60px; left: 20%; animation-delay: 2s; }
+  .particle:nth-child(3) { width: 40px; height: 40px; left: 30%; animation-delay: 4s; }
+  .particle:nth-child(4) { width: 100px; height: 100px; left: 40%; animation-delay: 0s; }
+  .particle:nth-child(5) { width: 50px; height: 50px; left: 50%; animation-delay: 3s; }
+  .particle:nth-child(6) { width: 70px; height: 70px; left: 60%; animation-delay: 1s; }
+  .particle:nth-child(7) { width: 90px; height: 90px; left: 70%; animation-delay: 5s; }
+  .particle:nth-child(8) { width: 45px; height: 45px; left: 80%; animation-delay: 2s; }
+  .particle:nth-child(9) { width: 65px; height: 65px; left: 90%; animation-delay: 4s; }
+
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.3;
+    }
+    90% {
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateY(-100vh) scale(1);
+      opacity: 0;
+    }
+  }
+
+  /* Glowing orbs in background */
+  .glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.4;
+    z-index: 0;
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  .orb-1 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #2e7d32, #66bb6a);
+    top: -100px;
+    left: -100px;
+  }
+
+  .orb-2 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #1976d2, #42a5f5);
+    bottom: -150px;
+    right: -150px;
+    animation-delay: 2s;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.6;
+    }
+  }
+
+  .register-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .register-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(46, 125, 50, 0.8), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .register-card h3 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 2rem;
+    background: linear-gradient(135deg, #fff, #c8f0c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% {
+      filter: hue-rotate(0deg);
+    }
+    50% {
+      filter: hue-rotate(20deg);
+    }
+  }
+
+  .subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.6s ease-out backwards;
+  }
+
+  .form-group:nth-child(1) { animation-delay: 0.1s; }
+  .form-group:nth-child(2) { animation-delay: 0.2s; }
+  .form-group:nth-child(3) { animation-delay: 0.3s; }
+  .form-group:nth-child(4) { animation-delay: 0.4s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .form-control, .form-select {
+    border-radius: 15px;
+    padding: 1rem 1.2rem 1rem 3rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+  }
+
+  .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .form-control:focus, .form-select:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.2),
+                0 8px 20px rgba(46, 125, 50, 0.3);
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  .form-select option {
+    background: #1e3c72;
+    color: #fff;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+
+  .form-control:focus ~ .input-icon,
+  .form-select:focus ~ .input-icon {
+    color: #2e7d32;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .btn-green {
+    background: linear-gradient(135deg, #2e7d32, #43a047);
+    border-radius: 15px;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border: none;
+    width: 100%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+    animation: fadeInUp 0.6s ease-out 0.5s backwards;
+  }
+
+  .btn-green::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+  }
+
+  .btn-green:hover::before {
+    left: 100%;
+  }
+
+  .btn-green:hover {
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.5);
+  }
+
+  .btn-green:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+  }
+
+  .btn-green:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    animation: fadeInUp 0.6s ease-out 0.6s backwards;
+  }
+
+  a {
+    color: #c8f0c8;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #c8f0c8;
+    transition: width 0.3s;
+  }
+
+  a:hover::after {
+    width: 100%;
+  }
+
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .alert {
+    border-radius: 15px;
+    text-align: center;
+    border: none;
+    animation: slideDown 0.5s ease-out;
+    margin-bottom: 1.5rem;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .alert-success {
+    background: linear-gradient(135deg, rgba(46, 125, 50, 0.9), rgba(67, 160, 71, 0.9));
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+  }
+
+  .alert-danger {
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.9), rgba(229, 57, 53, 0.9));
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+    20%, 40%, 60%, 80% { transform: translateX(8px); }
+  }
+
+  .shake {
+    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  }
+
+  .spinner-border {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading-spinner {
+    display: inline-block;
+    animation: rotate 1s linear infinite;
+  }
+
+  /* Success checkmark animation */
+  .success-checkmark {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+  }
+
+  .check-icon {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    border-radius: 50%;
+    box-sizing: content-box;
+    border: 4px solid #4caf50;
+  }
+
+  .check-icon::before {
+    top: 3px;
+    left: -2px;
+    width: 30px;
+    transform-origin: 100% 50%;
+    border-radius: 100px 0 0 100px;
+  }
+
+  .check-icon::after {
+    top: 0;
+    left: 30px;
+    width: 60px;
+    transform-origin: 0 50%;
+    border-radius: 0 100px 100px 0;
+    animation: rotateCircle 4.25s ease-in;
+  }
+
+  .icon-line {
+    height: 5px;
+    background-color: #4caf50;
+    display: block;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .icon-line.line-tip {
+    top: 46px;
+    left: 14px;
+    width: 25px;
+    transform: rotate(45deg);
+    animation: iconLineTip 0.75s;
+  }
+
+  .icon-line.line-long {
+    top: 38px;
+    right: 8px;
+    width: 47px;
+    transform: rotate(-45deg);
+    animation: iconLineLong 0.75s;
+  }
+
+  @keyframes iconLineTip {
+    0% {
+      width: 0;
+      left: 1px;
+      top: 19px;
+    }
+    54% {
+      width: 0;
+      left: 1px;
+      top: 19px;
+    }
+    70% {
+      width: 50px;
+      left: -8px;
+      top: 37px;
+    }
+    84% {
+      width: 17px;
+      left: 21px;
+      top: 48px;
+    }
+    100% {
+      width: 25px;
+      left: 14px;
+      top: 45px;
+    }
+  }
+
+  @keyframes iconLineLong {
+    0% {
+      width: 0;
+      right: 46px;
+      top: 54px;
+    }
+    65% {
+      width: 0;
+      right: 46px;
+      top: 54px;
+    }
+    84% {
+      width: 55px;
+      right: 0;
+      top: 35px;
+    }
+    100% {
+      width: 47px;
+      right: 8px;
+      top: 38px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .register-card {
+      padding: 2rem 1.5rem;
+    }
+    
+    .register-card h3 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Background effects -->
+<div class="particles">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
+<div class="glow-orb orb-1"></div>
+<div class="glow-orb orb-2"></div>
+
+<div class="register-card">
+  <h3>Create Your Account</h3>
+  <p class="subtitle">Join AgriLink and connect with the farming community</p>
+  
+  <div id="alertContainer"></div>
+  
+  <form id="registerForm">
+    <div class="form-group">
+      <input type="text" id="name" class="form-control" placeholder="Full Name" required>
+      <i class="bi bi-person-fill input-icon"></i>
+    </div>
+    
+    <div class="form-group">
+      <input type="email" id="email" class="form-control" placeholder="Email Address" required>
+      <i class="bi bi-envelope-fill input-icon"></i>
+    </div>
+    
+    <div class="form-group">
+      <input type="password" id="password" class="form-control" placeholder="Password" required minlength="6">
+      <i class="bi bi-lock-fill input-icon"></i>
+    </div>
+    
+    <div class="form-group">
+      <select id="role" class="form-select" required>
+        <option value="">I am a...</option>
+        <option value="farmer">🌾 Farmer</option>
+        <option value="buyer">🛒 Buyer</option>
+      </select>
+      <i class="bi bi-people-fill input-icon"></i>
+    </div>
+    
+    <button type="submit" class="btn-green" id="submitBtn">
+      <span id="submitText">Register</span>
+      <div id="submitSpinner" class="spinner-border spinner-border-sm d-none" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </button>
+  </form>
+  
+  <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+</div>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const submitBtn = document.getElementById('submitBtn');
+  const submitText = document.getElementById('submitText');
+  const submitSpinner = document.getElementById('submitSpinner');
+  const alertContainer = document.getElementById('alertContainer');
+  
+  // Show loading state
+  submitText.textContent = 'Registering...';
+  submitSpinner.classList.remove('d-none');
+  submitBtn.disabled = true;
+  
+  const formData = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    password: document.getElementById('password').value,
+    role: document.getElementById('role').value
+  };
+  
+  try {
+    const response = await fetch('/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+    
+    const data = await response.json();
+    
+    if (data.status === 'success') {
+  // Show success message with checkmark animation
+  alertContainer.innerHTML = `
+    <div class="alert alert-success">
+      <div class="success-checkmark">
+        <div class="check-icon">
+          <span class="icon-line line-tip"></span>
+          <span class="icon-line line-long"></span>
+        </div>
+      </div>
+      <div>Registration successful! Redirecting to your dashboard...</div>
+    </div>
+  `;
+  
+  // Store user data in localStorage for frontend access
+  localStorage.setItem('agrilink_user', JSON.stringify(data.user));
+  
+  // Redirect to appropriate dashboard
+  setTimeout(() => {
+    if (data.user.role === 'farmer') {
+      window.location.href = 'farmer_dashboard.html';
+    } else {
+      window.location.href = 'buyer_dashboard.html';
+    }
+  }, 2000);
+} else {
+  throw new Error(data.message);
+}
+  } catch (error) {
+    // Show error message
+    alertContainer.innerHTML = `
+      <div class="alert alert-danger">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        ${error.message || 'Registration failed. Please try again.'}
+      </div>
+    `;
+    
+    // Shake form on error
+    document.getElementById('registerForm').classList.add('shake');
+    setTimeout(() => {
+      document.getElementById('registerForm').classList.remove('shake');
+    }, 500);
+    
+    // Reset button
+    submitText.textContent = 'Register';
+    submitSpinner.classList.add('d-none');
+    submitBtn.disabled = false;
+  }
+});
+
+// Add interactive effects to form inputs
+const inputs = document.querySelectorAll('.form-control, .form-select');
+inputs.forEach(input => {
+  input.addEventListener('focus', function() {
+    this.parentElement.style.transform = 'scale(1.02)';
+  });
+  
+  input.addEventListener('blur', function() {
+    this.parentElement.style.transform = 'scale(1)';
+  });
+});
+// Add this function to check user session
+async function checkUserSession() {
+  try {
+    const response = await fetch('/user_session');
+    if (response.ok) {
+      const sessionData = await response.json();
+      // Session is valid, store in localStorage for frontend access
+      localStorage.setItem('agrilink_user', JSON.stringify(sessionData));
+      return sessionData;
+    } else {
+      // No valid session, check localStorage as fallback
+      const userData = localStorage.getItem('agrilink_user');
+      if (userData) {
+        return JSON.parse(userData);
+      }
+      return null;
+    }
+  } catch (error) {
+    console.error('Session check failed:', error);
+    // Fallback to localStorage
+    const userData = localStorage.getItem('agrilink_user');
+    return userData ? JSON.parse(userData) : null;
+  }
+}
+</script>
+
+</body>
+</html>
